@@ -1,0 +1,38 @@
+@import './base.css';
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* background-image: url('./wavy-lines.svg'); */
+  background-size: cover;
+  user-select: none;
+  /* background-color: transparent; */
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-app-region: drag;
+}
+
+button {
+  -webkit-app-region: no-drag;
+}
+
+.main {
+  height: 100px;
+  width: 900px;
+  color: aqua;
+  font-size: x-large;
+  overflow: hidden;
+  line-height: 100px;
+}
+
+.main .message {
+  animation: message 5s linear infinite;
+  transform: translateX(100%);
+}
+
+@keyframes message {
+  100% {
+    transform: translateX(-100%);
+  }
+}
