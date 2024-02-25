@@ -60,7 +60,7 @@ app.whenReady().then(() => {
     const tweet = 'message' + i
     mainWindow?.webContents.send('tweet', tweet)
     i++
-  }, 5000)
+  }, 10000)
 })
 
 app.on('window-all-closed', () => {

@@ -1,4 +1,6 @@
-@import './base.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   display: flex;
@@ -15,24 +17,4 @@ body {
 
 button {
   -webkit-app-region: no-drag;
-}
-
-.main {
-  height: 100px;
-  width: 900px;
-  color: aqua;
-  font-size: x-large;
-  overflow: hidden;
-  line-height: 100px;
-}
-
-.main .message {
-  animation: message 5s linear infinite;
-  transform: translateX(100%);
-}
-
-@keyframes message {
-  100% {
-    transform: translateX(-100%);
-  }
 }

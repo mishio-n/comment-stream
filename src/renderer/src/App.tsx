@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Telop } from './components/telop'
 
 function App(): JSX.Element {
   // const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
@@ -10,8 +11,8 @@ function App(): JSX.Element {
   const [message, setMessage] = useState('hoge')
 
   return (
-    <main className="main">
-      <p className="message">{message}</p>
+    <main className="h-[100px] w-[900px] overflow-hidden">
+      <Telop message={message} key={message} />
     </main>
   )
 }
