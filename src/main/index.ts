@@ -1,9 +1,10 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, Menu, Tray, nativeImage } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
 let mainWindow: BrowserWindow | null = null
+let tray: Tray | null = null
 
 function createWindow(): void {
   const browserWindow = new BrowserWindow({
@@ -40,6 +41,22 @@ function createWindow(): void {
   mainWindow = browserWindow
 }
 
+function createMenu(): void {
+  const menu = Menu.buildFromTemplate([
+    {
+      label: 'setting'
+    },
+    {
+      label: 'exit',
+      role: 'quit'
+    }
+  ])
+
+  const icon = nativeImage.createFromPath(`${__dirname}/../../resources/icon.png`)
+  tray = new Tray(icon)
+  tray.setContextMenu(menu)
+}
+
 app.whenReady().then(() => {
   electronApp.setAppUserModelId('com.electron')
 
@@ -50,10 +67,12 @@ app.whenReady().then(() => {
   ipcMain.on('ping', () => console.log('pong'))
 
   createWindow()
+  createMenu()
 
   app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
+  // app.dock.hide()
 
   let i = 0
   setInterval(() => {
