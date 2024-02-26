@@ -18,7 +18,8 @@ function createWindow(): void {
       sandbox: false
     },
     transparent: true,
-    frame: false
+    frame: false,
+    hasShadow: false
   })
 
   browserWindow.setAlwaysOnTop(true, 'floating')
@@ -72,7 +73,7 @@ app.whenReady().then(() => {
   app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
-  // app.dock.hide()
+  app.dock.hide()
 
   let i = 0
   setInterval(() => {
